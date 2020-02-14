@@ -8,18 +8,35 @@ app.use(express.json());
 app.get('/test1',(req, res)=>{
     res.send("Testing");
 })
-// app.get('/manish',(req, res)=>{
-//     console.log("queryww ->", req.query);
-//     res.send(`hello, ${req.query.hello}`);
-// })
+
+
+/**
+ * Get with parameters
+ */
 app.get('/test2',(req, res)=>{
     console.log("Query -> ", req.query);
     res.send(`Hello, ${req.query.hello}`);
     //http://localhost:3000/test2/?hello=Manish
 })
 
+
+/**
+ * Post has body and get doesn't
+ */
+app.post('/post', (req, res)=>{
+    console.log("Post -> ", req.body);
+    res.send('Worked!!!')
+})
+
+
+
+
+/**
+ * Default
+ */
+
 app.get('*',(req, res)=>{
-res.send("This is my first display");
+res.send("DEFAULT DISPLAY");
 })
 
 app.listen(3000);
